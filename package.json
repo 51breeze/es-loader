@@ -1,0 +1,35 @@
+{
+  "name": "es-loader",
+  "version": "0.0.1",
+  "description": "es-loader test",
+  "main": "lib/loader.js",
+  "scripts": {
+    "version": "node ./bin/es.js -V",
+    "dev": "node ./bin/es.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/51breeze/es-loader.git"
+  },
+  "keywords": [
+    "es",
+    "ease",
+    "script",
+    "EaseScript",
+    "web"
+  ],
+  "author": "Jun Ye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/51breeze/es-loader/issues"
+  },
+  "homepage": "https://github.com/51breeze/es-loader#readme",
+  "dependencies": {
+    "easescript": "^0.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.0.0",
+    "webpack-dev-server": "^3.0.0",
+    "html-webpack-plugin": "^3.0.0"
+  }
+}
