@@ -4,8 +4,8 @@
   "description": "es-loader test",
   "main": "lib/loader.js",
   "scripts": {
-    "version": "node ./bin/es.js -V",
-    "dev": "node ./bin/es.js"
+    "version": "es -V",
+    "dev": "node ./test/webpack-dev-config.js"
   },
   "repository": {
     "type": "git",
@@ -25,11 +25,13 @@
   },
   "homepage": "https://github.com/51breeze/es-loader#readme",
   "dependencies": {
-    "easescript": "^0.0.0"
+    "easescript": "0.0.36",
+    "es-javascript": "0.0.5"
   },
   "devDependencies": {
-    "webpack": "^4.0.0",
-    "webpack-dev-server": "^3.0.0",
-    "html-webpack-plugin": "^3.0.0"
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.46.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpackbar": "^5.0.0-3"
   }
 }
