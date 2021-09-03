@@ -1,6 +1,13 @@
+package;
 class Index{
+    constructor(){
+        
+    }
     start(){
-        console.log("===Hello word= 3333 6666")
+        console.log("===Hello word====");
+
+         console.log( @Provider(server.User, index) );
+
     }
 }
 

@@ -31,7 +31,7 @@ const config = {
   },
   devServer: {
     contentBase:path.resolve( build ),
-    hot:false,
+    hot:true,
     host:host,
     port:port,
     open:false,
@@ -50,7 +50,7 @@ const config = {
             loader:loader,
             options:{
                 mode:"development",
-                watch:true,
+                hot:true,
             },
           }
         ]
