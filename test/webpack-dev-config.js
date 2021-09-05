@@ -50,6 +50,13 @@ const config = {
             loader:loader,
             options:{
                 mode:"development",
+                server:{
+                    builder:require('es-php'),
+                    options:{
+                      output:build,
+                      workspace:workspace,
+                    },
+                },
                 hot:true,
             },
           }
