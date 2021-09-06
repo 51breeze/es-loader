@@ -1,12 +1,11 @@
 <?php
-namespace server;
 require_once('server/ServerProvider.php');
 use \server\ServerProvider;
 /**
 * @class User
 * @inherit \server\ServerProvider
 */
-class User extends ServerProvider{
+namespace server; class User extends ServerProvider{
 
 	/**
 	* @constructor User

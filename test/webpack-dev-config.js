@@ -10,7 +10,11 @@ const build = path.resolve( "./test/build" )
 const loader = require.resolve("../lib/loader")
 const host = "localhost";
 const port = 8083;
-
+const serverSyntax = require('es-php');
+serverSyntax.config({
+  output:build,
+  workspace
+})
 const config = {
   mode:"development",
   devtool:"(none)",
@@ -51,7 +55,7 @@ const config = {
             options:{
                 mode:"development",
                 server:{
-                    builder:require('es-php'),
+                    builder:serverSyntax,
                     options:{
                       output:build,
                       workspace:workspace,
