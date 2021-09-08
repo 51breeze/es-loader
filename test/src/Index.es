@@ -1,12 +1,14 @@
 package;
+
+import Person;
 class Index{
     constructor(){
         
     }
     start(){
-        console.log("===Hello word====");
-
-         console.log( @Provider(server.User, index) );
+        console.log("===Hello word=== 666===");
+         var person = new Person();
+         person.start();
 
     }
 }

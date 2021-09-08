@@ -1,8 +1,9 @@
 <?php
+namespace server;
 /**
 * @class ServerProvider
 */
-namespace server; class ServerProvider{
+class ServerProvider{
 
 	/**
 	* @method success

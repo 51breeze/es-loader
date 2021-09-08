@@ -1,11 +1,12 @@
 <?php
+namespace server;
 require_once('server/ServerProvider.php');
 use \server\ServerProvider;
 /**
 * @class User
 * @inherit \server\ServerProvider
 */
-namespace server; class User extends ServerProvider{
+class User extends ServerProvider{
 
 	/**
 	* @constructor User
@@ -18,6 +19,6 @@ namespace server; class User extends ServerProvider{
 	* @method index
 	*/
 	public function index(){
-		$this->success([1,9,9,9,9]);
+		$this->success([1,6666,9999]);
 	}
 }
