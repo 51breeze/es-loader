@@ -3,6 +3,14 @@ package;
 import Person;
 class Index{
     constructor(){
+
+        document.addEventListener('DEVELOPMENT_HOT_UPDATE',(e)=>{
+
+              e.stopImmediatePropagation();
+
+            console.log("===Index==DEVELOPMENT_HOT_UPDATE=");
+          
+        });
         
     }
     start(){
