@@ -5,8 +5,8 @@ class User extends ServerProvider{
 
     @Get()
     index(){
-        this.success([1,6666,9999]);
-        
+        this.success([1,6666,9999,99999, 66666666]);
+        ll
         
     }
 }

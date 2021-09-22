@@ -21,8 +21,8 @@ const buildSyntax=[
   {
     name:'es-javascript',
     options:{
-      module:2,
-      importPath:1,
+      module:'es',
+      useAbsolutePathImport:true,
       output:build,
       workspace
     }
