@@ -26,8 +26,8 @@
   "homepage": "https://github.com/51breeze/es-loader#readme",
   "dependencies": {
     "chokidar": "^3.5.2",
-    "easescript": "0.0.49",
-    "es-javascript": "0.0.13",
+    "easescript": "0.0.51",
+    "es-javascript": "0.0.14",
     "es-php": "0.0.6"
   },
   "devDependencies": {
