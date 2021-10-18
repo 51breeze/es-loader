@@ -10,16 +10,16 @@ const build = path.resolve( "./test/build" )
 const loader = require.resolve("../lib/loader")
 const host = "localhost";
 const port = 8083;
-const buildSyntax=[
+const plugins=[
   {
-    name:'es-php',
+    builder:require('es-php'),
     options:{
       output:build,
       workspace
     }
   },
   {
-    name:'es-javascript',
+    builder:require('es-javascript'),
     options:{
       module:'es',
       useAbsolutePathImport:true,
@@ -27,11 +27,7 @@ const buildSyntax=[
       workspace
     }
   }
-].map( item=>{
-   const builder = require(item.name);
-   builder.config(item.options);
-   return builder;
-});
+];
 
 const config = {
   mode:"development",
@@ -73,12 +69,8 @@ const config = {
             options:{
                 mode:"development",
                 hot:true,
-                client:{
-                  builder:buildSyntax[1],
-                },
-                server:{
-                  builder:buildSyntax[0],
-                },
+                client:plugins[1],
+                server:plugins[0],
             },
           }
         ]
