@@ -1,29 +1,26 @@
 
 const path = require("path");
-const fs = require("fs");
-const webpack = require("webpack");
 const webpackbar = require("webpackbar");
-const webpackDevServer = require('webpack-dev-server');
+const ExtractTextPlugin = require("mini-css-extract-plugin");
+const {VueLoaderPlugin} = require("vue-loader");
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const workspace = path.resolve( "./test/src" )
+
 const build = path.resolve( "./test/build" )
 const loader = require.resolve("./lib/loader")
-const {VueLoaderPlugin} = require('vue-loader')
-const vueLoaderConfig = require('./vueConfig/vue-loader.conf')
-const utils = require('./vueConfig/utils')
 
 const host = "localhost";
 const port = 8083;
 const plugins=[
   {
-    builder:require('../../es-php'),
+    builder:require('../es-php'),
     options:{
       output:build,
       workspace
     }
   },
   {
-    builder:require('../../es-javascript'),
+    builder:require('../es-javascript'),
     options:{
       module:'es',
       webComponent:'vue',
@@ -34,16 +31,13 @@ const plugins=[
   }
 ];
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
-
 const config = {
   mode:"development",
-  devtool:"(none)",
+ // devtool:"(none)",
+  devtool:false,
   target:"web",
   entry:{
-    index: path.join(workspace,"vue/Index.es")
+    index: path.join(workspace,"vue/Index.es"),
   },
   output: {
     path:path.resolve( build ),
@@ -63,12 +57,16 @@ const config = {
     // }
   },
   devServer: {
-    contentBase:path.resolve( build ),
     hot:true,
     host:host,
     port:port,
     open:false,
-    noInfo:true,
+    client: {
+      overlay:{
+        errors: true,
+        warnings: false,
+      }
+    },
   },
   watch:false,
   watchOptions:{
@@ -97,11 +95,17 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        options: {
+            presets: ['@vue/babel-preset-jsx']
+        },
+        exclude: /(bower_components)/
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: [
+            ExtractTextPlugin.loader,
+            'css-loader'
+          ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
@@ -119,6 +123,8 @@ const config = {
         "template": path.join(workspace,"./index.html"),
       }),
       new webpackbar(),
+      new VueLoaderPlugin(),
+      new ExtractTextPlugin({filename:'[name].min.css'})
   ],
   optimization:{
     removeEmptyChunks:true,
@@ -131,23 +137,26 @@ const config = {
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       automaticNameDelimiter: '~',
-      name: true,
       cacheGroups: {
           'vue': {
               test: /[\\/]node_modules[\\/]vue[\\/]/i,
+              name: 'vue',
               priority: -10
           },
           'element-ui': {
             test: /[\\/]node_modules[\\/]element-ui[\\/]/i,
+            name: 'element-ui',
             priority: -10
           },
           'es':{
             test: /\.es$/,
+            name: 'es',
             priority: -5
           },
           default: {
               minChunks: 2,
               priority: -20,
+              name: 'default',
               reuseExistingChunk: true
           }
       }
@@ -155,13 +164,5 @@ const config = {
   }
 };
 
-webpackDevServer.addDevServerEntrypoints(config, config.devServer);
-const compiler = webpack( config );
-const server = new webpackDevServer(compiler, config.devServer);
-server.listen(port,host,()=>{
-  if( config.devServer.port ){
-   console.log(`running(http://${config.devServer.host}:${config.devServer.port})`)
-  }else{
-    console.log(`running(http://${config.devServer.host})`)
-  }
-})
+
+module.exports = config
