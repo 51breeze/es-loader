@@ -1,7 +1,7 @@
 
 package server;
 
-//@Runtime(server);
+@Runtime(server);
 class ServerProvider{
 
     success( data:object, code:int=200){

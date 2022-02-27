@@ -20,10 +20,12 @@ const plugins=[
     }
   },
   {
-    builder:require('../es-javascript'),
+    builder:require('../es-vue'),
     options:{
       module:'es',
       webComponent:'vue',
+      webpack:true,
+      styleLoader:['style-loader','css-loader'],
       useAbsolutePathImport:true,
       output:build,
       workspace
@@ -37,7 +39,7 @@ const config = {
   devtool:false,
   target:"web",
   entry:{
-    index: path.join(workspace,"vue/Index.es"),
+    index: path.join(workspace,"Index.es"),
   },
   output: {
     path:path.resolve( build ),
@@ -83,7 +85,7 @@ const config = {
                 mode:"development",
                 hot:true,
                 client:plugins[1],
-                //server:plugins[0],
+                server:plugins[0],
             },
           }
         ]
