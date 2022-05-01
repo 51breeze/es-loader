@@ -28,16 +28,14 @@
   "homepage": "https://github.com/51breeze/es-loader#readme",
   "dependencies": {
     "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "babel-preset-env": "^1.7.0",
+    "loader-utils": "^2.0.0",
     "easescript": "*"
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
-    "webpack-dev-server": "^4.6.0",
-    "loader-utils": "^2.0.0",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0",
     "webpackbar": "^5.0.0-3"
   }
 }
