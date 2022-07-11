@@ -12,25 +12,28 @@ const loader = require.resolve("./lib/loader")
 const host = "localhost";
 const port = 8083;
 const plugins=[
-  {
-    builder:require('../es-php'),
-    options:{
-      output:build,
-      workspace
-    }
+
+  function(compiler,options){
+      const plugin = require('../es-php');
+      return new plugin(compiler, {
+        output:build,
+        workspace
+      })
   },
-  {
-    builder:require('../es-vue'),
-    options:{
-      module:'es',
-      webComponent:'vue',
-      webpack:true,
-      styleLoader:['style-loader','css-loader'],
-      useAbsolutePathImport:true,
-      output:build,
-      workspace
-    }
+  
+  function(compiler,options){
+      const plugin = require('../es-vue');
+      return new plugin(compiler, {
+          module:'es',
+          webComponent:'vue',
+          webpack:true,
+          styleLoader:['style-loader','css-loader'],
+          useAbsolutePathImport:true,
+          output:build,
+          workspace
+      })
   }
+  
 ];
 
 const config = {
