@@ -1,6 +1,6 @@
 {
   "name": "es-loader",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "es-loader test",
   "main": "lib/loader.js",
   "scripts": {
