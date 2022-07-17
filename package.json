@@ -1,6 +1,6 @@
 {
   "name": "es-loader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "es-loader test",
   "main": "lib/loader.js",
   "scripts": {
@@ -29,7 +29,7 @@
   "dependencies": {
     "@babel/core": "^7.16.0",
     "loader-utils": "^2.0.0",
-    "easescript": "*"
+    "easescript": "0.1.*"
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
