@@ -11,30 +11,30 @@ const loader = require.resolve("./lib/loader")
 
 const host = "localhost";
 const port = 8083;
-const plugins=[
 
-  function(compiler,options){
-      const plugin = require('../es-php');
-      return new plugin(compiler, {
-        output:build,
-        workspace
-      })
-  },
-  
-  function(compiler,options){
-      const plugin = require('../es-vue');
-      return new plugin(compiler, {
-          module:'es',
-          webComponent:'vue',
-          webpack:true,
-          styleLoader:['style-loader','css-loader'],
-          useAbsolutePathImport:true,
-          output:build,
-          workspace
-      })
+const plugins=[
+  {
+    plugin:require('../es-javascript'),
+    options:{
+      webpack:true,
+      useAbsolutePathImport:true,
+      output:build,
+      sourceMaps:true,
+      version:3,
+      srcCSS:false,
+      optimize:true,
+      metadata:{
+        env:process.env,
+      },
+      babel:false,
+      workspace
+    }
   }
-  
 ];
+
+
+
+
 
 const config = {
   mode:"development",
@@ -87,8 +87,8 @@ const config = {
             options:{
                 mode:"development",
                 hot:true,
-                client:plugins[1],
-                server:plugins[0],
+                builder:plugins[0],
+                plugins:[],
             },
           }
         ]
