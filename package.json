@@ -1,6 +1,6 @@
 {
   "name": "es-loader",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "EaseScript Code loader for Webpack",
   "main": "lib/loader.js",
   "scripts": {
